@@ -1,0 +1,56 @@
+<form name="wrl_tables" class="wrl_tables" method="post" action="">
+	<table><tbody><tr><td><input type="hidden" name="wrl_options" value="1">WP Related Posts Options</td></tr></tbody></table>
+	<table class="form-table">
+		<tbody>
+			<tr>
+				<th scope="row" class="posts_limit">
+					<label for="posts_limit"><strong><?php esc_html_e( 'Posts Limit', 'digital-theme' ); ?></strong> <small>(No of posts to show in Related Post Section)</small></label>
+				</th>
+				<td class="posts_limit">
+					<label><input type="number" name="posts_limit" id="posts_limit" min="1" max="10" value="<?= $posts_limit ?>"> </label>
+				</td>
+				<th scope="row" class="heading">
+					<label for="heading"><strong><?php esc_html_e( 'Section Heading', 'digital-theme' ); ?></strong> <small>(Heading to be shown in Related Posts Section in frontend)</small></label>
+				</th>
+				<td class="heading">
+					<label><input type="text" name="heading" id="heading" min="1" max="10" value="<?= $heading ?>"> </label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="description_length">
+					<label for="description_length"><strong><?php esc_html_e( 'Description Length', 'digital-theme' ); ?></strong></label>
+				</th>
+				<td class="description_length">
+					<label><input type="number" name="description_length" id="description_length" min="1" value="<?= $description_length ?>"> </label>
+				</td>
+				<th scope="row">
+					<label for="sort_by"><strong><?php esc_html_e( 'Order By', 'digital-theme' ); ?></strong></label>
+				</th>
+				<td>
+					<select name="sort_by" id="sort_by" required="">
+						<option value="random"> Random </option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="post_types"><strong><?php esc_html_e( 'Post Types', 'digital-theme' ); ?></strong> <small>(Select post type where the tags will be enabled)</small></label>
+				</th>
+				<td>
+					<div style="min-height: 100px;max-height: 300px;overflow-x: scroll;padding: 10px;border: 1px solid black;border-radius: 12px;">
+						<?php
+							foreach ( (array) get_post_types( [ 'public' => true ], 'objects' ) as $type ) {
+									// $type = str_replace('-', ' ', $type);
+									echo "<label><input type='checkbox' name='post_types[]' value='" . $type->name . "' " . ( in_array( $type->name, $post_types ) ? 'checked=""' : '' ) . ">" . ucwords( $type->label ) . "</label><br>";
+							}
+						?>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3"><?=submit_button();?></td>
+				<td><p class="submit"><button data-click="refresh-all" data-id="0" class="button button-primary">Reset All Listings</button</p></td>
+			</tr>
+		</tbody>
+	</table>
+</form>

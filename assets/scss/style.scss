@@ -1,0 +1,52 @@
+.sidebar-box {
+    background-color: #fff;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    .head {
+        padding: 18px 22px 0;
+        border-bottom: 1px solid #ecebf8;
+        margin-bottom: 18px;
+        @media screen and (max-width: 768px) {
+            padding: 18px 20px 0;
+        }
+        h4 {
+            color: #6559c4;
+            margin-bottom: 10px;
+            font-weight: 800;
+            @media screen and (max-width: 768px) {
+                font-size: 18px;
+            }
+        }
+    }
+    .box-content {
+        padding: 0 22px;
+        @media screen and (max-width: 768px) {
+            padding: 0px 20px;
+        }
+        .sub-head {
+            font-size: 15px;
+            margin-bottom: 10px;
+            a {
+                color: #6559c4;
+            }
+        }
+        p {
+            margin-bottom: 0;
+            font-size: 13px;
+            line-height: 18px;
+            @media screen and (max-width: 768px) {
+                font-size: 14px;
+            }
+        }
+        .related-posts-error {
+            color: #e65156;
+            background-color: #f0f0f1;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 10px 0;
+            border-radius: 13px;
+        }
+    }
+}

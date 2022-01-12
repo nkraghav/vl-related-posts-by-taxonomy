@@ -1,0 +1,49 @@
+form.wrl_tables {
+	.display-class { display: none; }
+	table:first-child {
+		tr{
+			text-align: center;
+		}
+		tr:first-child {
+			font-weight: bold;
+			font-size: 16px
+		}
+		tr:not(:first-child) {
+			td{
+				padding-top: 30px;
+			}
+		}
+	}
+	table {
+		width: 60%;
+		margin: 20px;
+		padding: 20px;
+		border-radius: 13px;
+		border-collapse: unset;
+		background-color: white;
+
+		th{
+			small {
+				color:red;
+			}
+		}
+
+		.table-head {
+			text-align: center;
+			border-bottom: 1px solid black;
+		}
+
+		.compare-button-plus, .compare-button-minus {
+			margin-top: 5px;
+		}
+
+		input:not([type='checkbox']), select {
+			width: 150px;
+		}
+	}
+
+	.disabled-class {
+		pointer-events: none;
+		opacity:0.4;
+	}
+}
