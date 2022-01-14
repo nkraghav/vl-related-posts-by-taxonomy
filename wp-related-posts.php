@@ -5,7 +5,7 @@
     Description: This plugin is used to show related posts on the pages.
     Author: Nitin Kumar Raghav
     Author URI: https://nitinraghav.com/
-    Version: 0.1
+    Version: 0.2
 	License: GPLv2 or later
  	Text Domain: related-posts
     */

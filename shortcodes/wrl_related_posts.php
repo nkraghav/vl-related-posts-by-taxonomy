@@ -18,7 +18,7 @@ class WrlRelatedPosts
         extract( shortcode_atts( get_option( 'wrl-options' ), $attr ) );
         if( empty( $description_length ) ) $description_length = 20;
         $related_content_data = [];
-        foreach (explode(',', $this->get_related_posts_ta( $posts_limit, $description_length, $sort_by )) as $post) :
+        foreach (explode(',', $this->get_related_posts_ta()) as $post) :
             if( empty( $post ) ) continue;
             $temp_data = $this->get_title_description( $post, $description_length );
             $temp_data['cta_url'] = get_permalink( $post );
@@ -33,13 +33,13 @@ class WrlRelatedPosts
 		return $content;
     }
 
-    function get_related_posts_ta( $posts_limit ) {
+    function get_related_posts_ta() {
         $post_id = get_the_ID();
         # get the mapping of the post ids to the pages
         $posts = $this->wpdb->get_row('SELECT wl_assigned_post_id FROM wrl_list WHERE wl_post_id = '.$post_id);
         # if it is empty then create a new list
         if( count( $posts ) < 1 ) {
-            return create_random_list($post_id, $posts_limit);
+            return create_random_list( $post_id  );
         }
         return $posts->wl_assigned_post_id;
     }
@@ -51,7 +51,7 @@ class WrlRelatedPosts
         if( ! empty( $description ) ) $description = wp_trim_words(strip_tags(preg_replace('/<h[1-6]>(.*?)<\/h[1-6]>/', '', do_shortcode( $description ))), $length);
         return [
             'title' => $title,
-            'description' => apply_filters( 'wrl_post_description', $description, $post_id, $length )
+            'description' => apply_filters( 'wrl_post_description', $description, $post_id )
         ];
     }
 }

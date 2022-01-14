@@ -24,9 +24,8 @@ class RestApis
             return ['status' => 'ok', 'content' => 'reload' ];
         }
         else {
-            $posts_limit = get_field('related_content', $post_id)['post_count_limit'];
             $wpdb->query('DELETE FROM wrl_list WHERE wl_post_id = ' . $post_id);
-            $updated_list = create_random_list($post_id, $posts_limit);
+            $updated_list = create_random_list( $post_id );
             if ( ! empty( $updated_list ) ) {
                 ob_start();
                 include WRL_PATH . "/templates/options/" . __FUNCTION__ . ".php";
