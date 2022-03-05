@@ -48,6 +48,24 @@
 				</td>
 			</tr>
 			<tr>
+				<th colspan="4" scope="row" class="rp_template">
+					<label for="rp_template"><strong><?php esc_html_e( 'Related Posts Template', 'digital-theme' ); ?></strong></label><br>
+					<small>
+						1. &lt;wrl-repeater-main&gt; For repeative block, use this wrapper &lt;/wrl-repeater-main&gt;<br>
+						2. &lt;wrl-repeater-no-result&gt; For no results block &lt;/wrl-repeater-no-result&gt;<br>
+						3. Variables -
+						<span>a) %%post_title%% - For post title </span>
+						<span>b) %%post_description%% - For post description </span>
+						<span>c) %%post_ur%% - For post permalink </span>
+					</small>
+				</th>
+			</tr>
+			<tr>
+				<td class="rp_template" colspan="4">
+					<label><?php wp_editor($rp_template, 'editor-'. wp_create_nonce('rp_template'), $settings = array('textarea_name' => 'rp_template')); ?></label>
+				</td>
+			</tr>
+			<tr>
 				<td colspan="3"><?=submit_button();?></td>
 				<td><p class="submit"><button data-click="refresh-all" data-id="0" class="button button-primary">Reset All Listings</button</p></td>
 			</tr>

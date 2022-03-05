@@ -16,18 +16,23 @@ class WrlRelatedPosts
     function add_wrl_related_posts( $attr ) {
         # extract attributs
         extract( shortcode_atts( get_option( 'wrl-options' ), $attr ) );
+        # return empty if related posts is not enabled on current post type
+        if( empty($post_types) || ! is_array($post_types) || ! in_array( get_post_type(), $post_types ) ) return;
+        # set description length if not defined
         if( empty( $description_length ) ) $description_length = 20;
         $related_content_data = [];
         foreach (explode(',', $this->get_related_posts_ta()) as $post) :
             if( empty( $post ) ) continue;
             $temp_data = $this->get_title_description( $post, $description_length );
-            $temp_data['cta_url'] = get_permalink( $post );
-            $temp_data['cta_label'] = 'Read More';
+            $temp_data['post_url'] = get_permalink( $post );
             $related_content_data[] = $temp_data;
         endforeach;
         # start form
         ob_start();
-        wp_enqueue_style( 'wp-related-posts', WRL_URL . "/assets/css/wp-related-posts.min.css", null, false );
+        wp_enqueue_style( 'wp-related-posts', WRL_URL . "assets/css/style.min.css", null, false );
+        # if no custom template found, get the default template
+        if( empty( $rp_template ) )
+            $rp_template = file_get_contents( WRL_PATH . "/templates/frontend/" . __FUNCTION__ . "_default.php" );
         include WRL_PATH . "/templates/frontend/" . __FUNCTION__ . ".php";
         $content = ob_get_clean();
 		return $content;
@@ -48,7 +53,11 @@ class WrlRelatedPosts
         if( empty( $post_id ) ) return '';
         $title = get_the_title( $post_id );
         $description = get_the_content(null, false, $post_id);
-        if( ! empty( $description ) ) $description = wp_trim_words(strip_tags(preg_replace('/<h[1-6]>(.*?)<\/h[1-6]>/', '', do_shortcode( $description ))), $length);
+        if( ! empty( $description ) ) {
+            $description = preg_replace('/<h[1-6]>(.*?)<\/h[1-6]>/', '', $description );
+            $description = preg_replace('/\[table(.*?)\]/', '', $description );
+            $description = wp_trim_words(strip_tags( do_shortcode( $description )), $length);
+        }
         return [
             'title' => $title,
             'description' => apply_filters( 'wrl_post_description', $description, $post_id )

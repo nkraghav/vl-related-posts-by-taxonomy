@@ -8,6 +8,7 @@
     </ol>
 </td>
 <td class="center">
-    <a href='<?=get_edit_post_link($post_id)?>' target='_blank'>Edit Post</a>&nbsp;
-    <a target='_blank' data-click="refresh" data-id="<?=$post_id?>">Refresh List</a>
+    <a href='<?=get_edit_post_link($post_id)?>' target='_blank'>Edit Post</a> | 
+    <a target='_blank' data-click="refresh" data-id="<?=$post_id?>">Refresh List</a> | 
+    <a target='_blank' data-click="delete" data-id="<?=$post_id?>">Delete Mapping</a>
 </td>

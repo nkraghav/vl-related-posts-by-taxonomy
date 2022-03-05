@@ -28,6 +28,7 @@ class Options
 				'post_types' => $_POST['post_types'],
 				'description_length' => $_POST['description_length'],
 				'sort_by' => stripslashes( $_POST['sort_by'] ),
+				'rp_template' => stripslashes( $_POST['rp_template'] ),
 			];
 			update_option('wrl-options', $wrl_options );
 			$wrl_options = get_option( 'wrl-options' );
@@ -54,6 +55,7 @@ class Options
 			'post_types' => [],
 			'description_length' => 20,
 			'sort_by' => 'random',
+			'rp_template' => file_get_contents( WRL_PATH . "/templates/frontend/add_wrl_related_posts_default.php" ),
 		];
 	}
 

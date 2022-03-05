@@ -25,6 +25,11 @@ form.wrl_tables {
 		th{
 			small {
 				color:red;
+				span {
+					color:gray;
+					display: block;
+    				padding-left: 30px;
+				}
 			}
 		}
 

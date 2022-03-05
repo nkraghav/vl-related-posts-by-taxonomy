@@ -23,8 +23,9 @@
                         </ol>
                     </td>
                     <td class="center">
-                        <a href='<?=get_edit_post_link($list->wl_post_id)?>' target='_blank'>Edit Post</a>&nbsp;
-                        <a target='_blank' data-click="refresh" data-id="<?=$list->wl_post_id?>">Refresh List</a>
+                        <a href='<?=get_edit_post_link($list->wl_post_id)?>' target='_blank'>Edit Post</a> | 
+                        <a target='_blank' data-click="refresh" data-id="<?=$list->wl_post_id?>">Refresh List</a> | 
+                        <a target='_blank' data-click="delete" data-id="<?=$list->wl_post_id?>">Delete Mapping</a>
                     </td>
                 </tr>
         <?php

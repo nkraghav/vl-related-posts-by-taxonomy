@@ -1,12 +1,13 @@
 var wrl = new Object();
 (function($){
-	wrl.refresh_list = function(data_id, obj) {
+	wrl.refresh_list = function(data_id, obj, type) {
 		if (wrl.refresh_list.jqxhr)
 			wrl.refresh_list.jqxhr.abort();
 
         wrl.data = {
             post_id : data_id,
             index : obj.parents('tr').children('td:first').html(),
+            type : type,
         };
 
         wrl.refresh_list.jqxhr = $.getJSON({
@@ -20,8 +21,11 @@ var wrl = new Object();
             success: function(response) {
                 response.obj = obj;
                 if( response.status === 'ok' ) {
-                    if( response.content == 'reload' )
+                    if( response.content == 'reload' ) {
+                        if( type == 'delete' )
+                            obj.parents('tr').remove();
                         document.location.reload();
+                    }
                     else
                         obj.parents('tr').html(response.content);
                 }
@@ -39,7 +43,12 @@ var wrl = new Object();
 	jQuery(function($){
 		$(document).on('click', 'table.wp-mapping-list a[data-click="refresh"]', function(e){
             var data_id = $(this).attr('data-id');
-            wrl.refresh_list(data_id, $(this));
+            wrl.refresh_list(data_id, $(this), 'refresh');
+		});
+
+		$(document).on('click', 'table.wp-mapping-list a[data-click="delete"]', function(e){
+            var data_id = $(this).attr('data-id');
+            wrl.refresh_list(data_id, $(this), 'delete');
 		});
 
 		$(document).on('click', 'button[data-click="refresh-all"]', function(e){
