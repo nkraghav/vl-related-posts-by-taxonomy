@@ -1,7 +1,6 @@
 <?php
 /**
  * Plugin Name: VL Related Posts by Taxonomy
- * Plugin URI: https://nitinraghav.com/
  * Description: This plugin is used to show related posts on the pages.
  * Version: 1.0
  * Requires PHP: 7.0
