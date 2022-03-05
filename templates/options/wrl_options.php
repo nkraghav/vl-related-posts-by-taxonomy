@@ -4,13 +4,13 @@
 		<tbody>
 			<tr>
 				<th scope="row" class="posts_limit">
-					<label for="posts_limit"><strong><?php esc_html_e( 'Posts Limit', 'digital-theme' ); ?></strong> <small>(No of posts to show in Related Post Section)</small></label>
+					<label for="posts_limit"><strong><?php esc_html_e( 'Posts Limit', 'wrpbt-lng' ); ?></strong> <small>(No of posts to show in Related Post Section)</small></label>
 				</th>
 				<td class="posts_limit">
 					<label><input type="number" name="posts_limit" id="posts_limit" min="1" max="10" value="<?= $posts_limit ?>"> </label>
 				</td>
 				<th scope="row" class="heading">
-					<label for="heading"><strong><?php esc_html_e( 'Section Heading', 'digital-theme' ); ?></strong> <small>(Heading to be shown in Related Posts Section in frontend)</small></label>
+					<label for="heading"><strong><?php esc_html_e( 'Section Heading', 'wrpbt-lng' ); ?></strong> <small>(Heading to be shown in Related Posts Section in frontend)</small></label>
 				</th>
 				<td class="heading">
 					<label><input type="text" name="heading" id="heading" min="1" max="10" value="<?= $heading ?>"> </label>
@@ -18,13 +18,13 @@
 			</tr>
 			<tr>
 				<th scope="row" class="description_length">
-					<label for="description_length"><strong><?php esc_html_e( 'Description Length', 'digital-theme' ); ?></strong></label>
+					<label for="description_length"><strong><?php esc_html_e( 'Description Length', 'wrpbt-lng' ); ?></strong></label>
 				</th>
 				<td class="description_length">
 					<label><input type="number" name="description_length" id="description_length" min="1" value="<?= $description_length ?>"> </label>
 				</td>
 				<th scope="row">
-					<label for="sort_by"><strong><?php esc_html_e( 'Order By', 'digital-theme' ); ?></strong></label>
+					<label for="sort_by"><strong><?php esc_html_e( 'Order By', 'wrpbt-lng' ); ?></strong></label>
 				</th>
 				<td>
 					<select name="sort_by" id="sort_by" required="">
@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="post_types"><strong><?php esc_html_e( 'Post Types', 'digital-theme' ); ?></strong> <small>(Select post type where the tags will be enabled)</small></label>
+					<label for="post_types"><strong><?php esc_html_e( 'Post Types', 'wrpbt-lng' ); ?></strong> <small>(Select post type where the tags will be enabled)</small></label>
 				</th>
 				<td>
 					<div style="min-height: 100px;max-height: 300px;overflow-x: scroll;padding: 10px;border: 1px solid black;border-radius: 12px;">
@@ -49,7 +49,7 @@
 			</tr>
 			<tr>
 				<th colspan="4" scope="row" class="rp_template">
-					<label for="rp_template"><strong><?php esc_html_e( 'Related Posts Template', 'digital-theme' ); ?></strong></label><br>
+					<label for="rp_template"><strong><?php esc_html_e( 'Related Posts Template', 'wrpbt-lng' ); ?></strong></label><br>
 					<small>
 						1. &lt;wrl-repeater-main&gt; For repeative block, use this wrapper &lt;/wrl-repeater-main&gt;<br>
 						2. &lt;wrl-repeater-no-result&gt; For no results block &lt;/wrl-repeater-no-result&gt;<br>

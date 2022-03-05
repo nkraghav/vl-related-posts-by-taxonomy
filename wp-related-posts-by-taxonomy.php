@@ -1,14 +1,17 @@
 <?php
-    /*
-    Plugin Name: WP Related Posts by Taxonomy
-    Plugin URI: https://nitinraghav.com/
-    Description: This plugin is used to show related posts on the pages.
-    Author: Nitin Kumar Raghav
-    Author URI: https://nitinraghav.com/
-    Version: 0.2
-	License: GPLv2 or later
- 	Text Domain: related-posts
-    */
+/**
+ * Plugin Name: WP Related Posts by Taxonomy
+ * Plugin URI: https://nitinraghav.com/
+ * Description: This plugin is used to show related posts on the pages.
+ * Version: 1.0
+ * Requires PHP: 7.0
+ * Requires at least: 5.2
+ * Author: Nitin Kumar Raghav <mails@nitinraghav.com>
+ * Author URI: https://nitinraghav.com/
+ * License: GPLv2 or later
+ * Text Domain: wp-related-posts-by-taxonomy
+ * Tags: wp-related-posts-by-taxonomy, contextual-related-posts, related, related-articles, related-posts, similar-posts
+ */
 	# file path
 	defined("WRL_PATH") OR define("WRL_PATH", plugin_dir_path( __FILE__ ) );
 	# file path
