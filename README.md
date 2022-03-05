@@ -1,6 +1,6 @@
-=== WP Related Posts by Taxonomy ===
+=== VL Related Posts by Taxonomy ===
 Contributors: nitinraghav
-Tags: wp-related-posts-by-taxonomy, contextual-related-posts, related, related-articles, related-posts, similar-posts
+Tags: vl-related-posts-by-taxonomy, contextual-related-posts, related, related-articles, related-posts, similar-posts
 Donate link: https://nitinraghav.com/
 Requires at least: 5.2
 Tested up to: 5.9.1
@@ -13,11 +13,11 @@ This plugin is used to add related posts to your WordPress site pages with inbui
 
 == Description ==
 
-[WP Related Posts by Taxonomy] is a powerful plugin for WordPress that allows you to display a list of related posts on your website and in your feed.
+[VL Related Posts by Taxonomy] is a powerful plugin for WordPress that allows you to display a list of related posts on your website and in your feed.
 
 It shows the list of posts on the pages on the basis of the **ta-tags**. It relates all the posts having the same **ta-tags**.
 
-Although several similar plugins exist today, WP Related Posts by Taxonomy is one of the most powerful plugin that can support all of your custom post types. Only you have to select the post types to be suported by this plugin in its options page. It mapped the specified number of posts to the posts only once and stores them in the databse. So that it will not repeat the process of mapping.
+Although several similar plugins exist today, VL Related Posts by Taxonomy is one of the most powerful plugin that can support all of your custom post types. Only you have to select the post types to be suported by this plugin in its options page. It mapped the specified number of posts to the posts only once and stores them in the databse. So that it will not repeat the process of mapping.
 
 = Key features =
 
@@ -34,7 +34,7 @@ Although several similar plugins exist today, WP Related Posts by Taxonomy is on
 
 1. Navigate to Plugins within your WordPress Admin Area
 
-2. Click "Add new" and in the search box enter "WP Related Posts by Taxonomy"
+2. Click "Add new" and in the search box enter "VL Related Posts by Taxonomy"
 
 3. Find the plugin in the list (usually the first result) and click "Install Now"
 
@@ -42,6 +42,6 @@ Although several similar plugins exist today, WP Related Posts by Taxonomy is on
 
 1. Download the plugin
 
-2. Extract the contents of wp-related-posts-by-taxonomy.zip to wp-content/plugins/ folder. You should get a folder called wp-related-posts-by-taxonomy.
+2. Extract the contents of vl-related-posts-by-taxonomy.zip to wp-content/plugins/ folder. You should get a folder called vl-related-posts-by-taxonomy.
 
-3. Activate the Plugin in WP-Admin under the Plugins screen
+3. Activate the Plugin in VL-Admin under the Plugins screen

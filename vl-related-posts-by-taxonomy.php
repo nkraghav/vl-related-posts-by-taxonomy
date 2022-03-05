@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WP Related Posts by Taxonomy
+ * Plugin Name: VL Related Posts by Taxonomy
  * Plugin URI: https://nitinraghav.com/
  * Description: This plugin is used to show related posts on the pages.
  * Version: 1.0
@@ -9,8 +9,8 @@
  * Author: Nitin Kumar Raghav <mails@nitinraghav.com>
  * Author URI: https://nitinraghav.com/
  * License: GPLv2 or later
- * Text Domain: wp-related-posts-by-taxonomy
- * Tags: wp-related-posts-by-taxonomy, contextual-related-posts, related, related-articles, related-posts, similar-posts
+ * Text Domain: vl-related-posts-by-taxonomy
+ * Tags: vl-related-posts-by-taxonomy, contextual-related-posts, related, related-articles, related-posts, similar-posts
  */
 	# file path
 	defined("WRL_PATH") OR define("WRL_PATH", plugin_dir_path( __FILE__ ) );
