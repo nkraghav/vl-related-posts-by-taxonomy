@@ -41,9 +41,9 @@ class WrlRelatedPosts
     function get_related_posts_ta() {
         $post_id = get_the_ID();
         # get the mapping of the post ids to the pages
-        $posts = $this->wpdb->get_row('SELECT wl_assigned_post_id FROM wrl_list WHERE wl_post_id = '.$post_id);
+        $posts = $this->wpdb->get_row('SELECT wl_assigned_post_id FROM wrl_list WHERE wl_post_id = '.$post_id, ARRAY_A);
         # if it is empty then create a new list
-        if( count( $posts ) < 1 ) {
+        if( ! empty($posts) && is_array($posts) && count( $posts ) < 1 ) {
             return create_random_list( $post_id  );
         }
         return $posts->wl_assigned_post_id;
