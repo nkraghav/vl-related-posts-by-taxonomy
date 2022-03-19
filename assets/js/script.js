@@ -1,22 +1,22 @@
-var wrl = new Object();
+var vrp = new Object();
 (function($){
-	wrl.refresh_list = function(data_id, obj, type) {
-		if (wrl.refresh_list.jqxhr)
-			wrl.refresh_list.jqxhr.abort();
+	vrp.refresh_list = function(data_id, obj, type) {
+		if (vrp.refresh_list.jqxhr)
+			vrp.refresh_list.jqxhr.abort();
 
-        wrl.data = {
+        vrp.data = {
             post_id : data_id,
             index : obj.parents('tr').children('td:first').html(),
             type : type,
         };
 
-        wrl.refresh_list.jqxhr = $.getJSON({
-            url: wrl_info.ajax_url+'refresh-list/?uid=' + Math.random(),
+        vrp.refresh_list.jqxhr = $.getJSON({
+            url: vrp_info.ajax_url+'refresh-list/?uid=' + Math.random(),
             type: 'post',
-            data: wrl.data,
+            data: vrp.data,
             async : true,
             beforeSend: function() {
-                $('table.wp-mapping-list').addClass('disabled-class');
+                $('table.vrp-mapping-list').addClass('disabled-class');
             },
             success: function(response) {
                 response.obj = obj;
@@ -34,27 +34,27 @@ var wrl = new Object();
                 }
             },
             complete: function(xhr, status) {
-                if($('table.wp-mapping-list').hasClass('disabled-class'))
-                    $('table.wp-mapping-list').removeClass('disabled-class');
+                if($('table.vrp-mapping-list').hasClass('disabled-class'))
+                    $('table.vrp-mapping-list').removeClass('disabled-class');
             },
         });
 	}
 
 	jQuery(function($){
-		$(document).on('click', 'table.wp-mapping-list a[data-click="refresh"]', function(e){
+		$(document).on('click', 'table.vrp-mapping-list a[data-click="refresh"]', function(e){
             var data_id = $(this).attr('data-id');
-            wrl.refresh_list(data_id, $(this), 'refresh');
+            vrp.refresh_list(data_id, $(this), 'refresh');
 		});
 
-		$(document).on('click', 'table.wp-mapping-list a[data-click="delete"]', function(e){
+		$(document).on('click', 'table.vrp-mapping-list a[data-click="delete"]', function(e){
             var data_id = $(this).attr('data-id');
-            wrl.refresh_list(data_id, $(this), 'delete');
+            vrp.refresh_list(data_id, $(this), 'delete');
 		});
 
 		$(document).on('click', 'button[data-click="refresh-all"]', function(e){
             e.preventDefault();
             var data_id = $(this).attr('data-id');
-            wrl.refresh_list(data_id, $(this));
+            vrp.refresh_list(data_id, $(this));
 		});
 	});
 })(jQuery);

@@ -5,14 +5,14 @@
  */
 
      
-    class TaTags
+    class VrpTaTags
     {
         function __construct() {
-            add_action( 'init', [$this, 'wrl_register_taxonomy'] );
+            add_action( 'init', [$this, 'vrp_register_taxonomy'] );
         }
         
-        function wrl_register_taxonomy() {
-            $wrl_options = get_option( 'wrl-options' );
+        function vrp_register_taxonomy() {
+            $wrl_options = get_option( 'vrp-options' );
             $labels = array(
                 'name'              => _x( 'TA Tags', 'taxonomy general name' ),
                 'singular_name'     => _x( 'TA Tag', 'taxonomy singular name' ),

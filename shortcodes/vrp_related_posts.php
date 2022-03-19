@@ -3,19 +3,19 @@
  * Adds a shortcode for
  * creating three company widgte
  */
-class WrlRelatedPosts
+class VrpRelatedPosts
 {
     private $wpdb;
 	function __construct() {
         global $wpdb;
         $this->wpdb = $wpdb;
 		# create company widget block
-        add_shortcode( 'wrl_related_posts', [ $this, 'add_wrl_related_posts' ] );
+        add_shortcode( 'wrl_related_posts', [ $this, 'add_vrp_related_posts' ] );
 	}
 
-    function add_wrl_related_posts( $attr ) {
+    function add_vrp_related_posts( $attr ) {
         # extract attributs
-        extract( shortcode_atts( get_option( 'wrl-options' ), $attr ) );
+        extract( shortcode_atts( get_option( 'vrp-options' ), $attr ) );
         # return empty if related posts is not enabled on current post type
         if( empty($post_types) || ! is_array($post_types) || ! in_array( get_post_type(), $post_types ) ) return;
         # set description length if not defined
@@ -29,11 +29,11 @@ class WrlRelatedPosts
         endforeach;
         # start form
         ob_start();
-        wp_enqueue_style( 'wp-related-posts', WRL_URL . "assets/css/style.min.css", null, false );
+        wp_enqueue_style( 'vrp-related-posts', VRP_URL . "assets/css/style.min.css", null, false );
         # if no custom template found, get the default template
         if( empty( $rp_template ) )
-            $rp_template = file_get_contents( WRL_PATH . "/templates/frontend/" . __FUNCTION__ . "_default.php" );
-        include WRL_PATH . "/templates/frontend/" . __FUNCTION__ . ".php";
+            $rp_template = file_get_contents( VRP_PATH . "templates/frontend/" . __FUNCTION__ . "_default.php" );
+        include VRP_PATH . "templates/frontend/" . __FUNCTION__ . ".php";
         $content = ob_get_clean();
 		return $content;
     }
@@ -41,12 +41,12 @@ class WrlRelatedPosts
     function get_related_posts_ta() {
         $post_id = get_the_ID();
         # get the mapping of the post ids to the pages
-        $posts = $this->wpdb->get_row('SELECT wl_assigned_post_id FROM wrl_list WHERE wl_post_id = '.$post_id, ARRAY_A);
+        $posts = $this->wpdb->get_row('SELECT wl_assigned_post_id FROM vrp_list WHERE wl_post_id = '.$post_id, ARRAY_A);
         # if it is empty then create a new list
-        if( ! empty($posts) && is_array($posts) && count( $posts ) < 1 ) {
-            return create_random_list( $post_id  );
+        if( empty($posts) || ! is_array($posts) || count( $posts ) < 1 ) {
+            return vrp_create_random_list( $post_id  );
         }
-        return $posts->wl_assigned_post_id;
+        return $posts['wl_assigned_post_id'];
     }
 
     function get_title_description( $post_id = null, $length = 20 ) {

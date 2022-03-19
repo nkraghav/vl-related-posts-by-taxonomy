@@ -3,13 +3,13 @@
  * This will add a general option tab to setting for 
  * adding global header and footers
  */
-class RestApis
+class VrpRestApis
 {
 	public $defaults = [];
 	function __construct( )
 	{
         add_action( 'rest_api_init', function(){
-            register_rest_route( 'wrl/v1', 'refresh-list', ['methods' => 'POST', 'callback' => [$this, 'refresh_list_ajax'], 'show_in_index' => false] );
+            register_rest_route( 'vrp/v1', 'refresh-list', ['methods' => 'POST', 'callback' => [$this, 'refresh_list_ajax'], 'show_in_index' => false] );
         } );
 	}
 
@@ -21,20 +21,20 @@ class RestApis
             return new \WP_Error('no_id', 'Missing ID or Index', ['status' => 400]);
         global $wpdb;
         if( $post_id == 0 ) {
-            $wpdb->query('TRUNCATE TABLE wrl_list');
+            $wpdb->query('TRUNCATE TABLE vrp_list');
             return ['status' => 'ok', 'content' => 'reload' ];
         }
         else {
-            $wpdb->query('DELETE FROM wrl_list WHERE wl_post_id = ' . $post_id);
+            $wpdb->query('DELETE FROM vrp_list WHERE wl_post_id = ' . $post_id);
             # if request is for deleting the particular mapping 
             if( $type == 'delete' )
                 return ['status' => 'ok', 'content' => 'reload' ];
             # if request is for refreshing the particular mapping 
             else if( $type == 'refresh' ) {
-                $updated_list = create_random_list( $post_id );
+                $updated_list = vrp_create_random_list( $post_id );
                 if ( ! empty( $updated_list ) ) {
                     ob_start();
-                    include WRL_PATH . "/templates/options/" . __FUNCTION__ . ".php";
+                    include VRP_PATH . "/templates/options/" . __FUNCTION__ . ".php";
                     $content = ob_get_clean();
                     return ['status' => 'ok', 'content' => $content ];
                 }

@@ -1,8 +1,8 @@
 <?php
 	# get repeater block from the template
-	preg_match_all('/<wrl-repeater-main>(.*)<\/wrl-repeater-main>/si', stripslashes($rp_template), $repeater_main);
+	preg_match_all('/<vrp-repeater-main>(.*)<\/vrp-repeater-main>/si', stripslashes($rp_template), $repeater_main);
 	# get no results block from the template
-	preg_match_all('/<wrl-repeater-no-result>(.*)<\/wrl-repeater-no-result>/si', stripslashes($rp_template), $repeater_no_result);
+	preg_match_all('/<vrp-repeater-no-result>(.*)<\/vrp-repeater-no-result>/si', stripslashes($rp_template), $repeater_no_result);
 	$repeater = '';
 	if( count( $related_content_data ) > 0 ) :
 		foreach( $related_content_data as $cont ) :
@@ -17,4 +17,4 @@
 		$rp_template = str_replace($repeater_main[0][0], '', $rp_template);
 		$rp_template = str_replace($repeater_no_result[0][0], $repeater_no_result[1][0], $rp_template);
 	endif;
-	echo $rp_template;
+	echo wp_kses_post($rp_template);

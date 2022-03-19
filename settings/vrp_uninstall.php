@@ -1,19 +1,19 @@
 <?php
-    class Deactivate
+    class VrpUninstall
     {
 		private $wpdb;
 
 		function __construct() {
 			// parent::__construct();
-			// $this->deactivate();
+			$this->uninstall();
 		}
 
-		public function deactivate()
+		public function uninstall()
 		{
             global $wpdb;
             $this->wpdb = $wpdb;
-            if( get_option( 'wrl-options' ) )
-                delete_option( 'wrl-options' );
+            if( get_option( 'vrp-options' ) )
+                delete_option( 'vrp-options' );
             # generate table
             $this->tbl_drop();
         
@@ -22,7 +22,7 @@
 		}
 		public function tbl_drop()
 		{
-			$sql = "DROP TABLE IF EXISTS `wrl_list`";
+			$sql = "DROP TABLE IF EXISTS `vrp_list`";
 			$this->wpdb->query($sql);
 		}
     }

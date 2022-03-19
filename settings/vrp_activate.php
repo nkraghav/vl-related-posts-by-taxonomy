@@ -1,5 +1,5 @@
 <?php
-    class Activate
+    class VrpActivate
     {
         # global db object
         private $wpdb;
@@ -13,7 +13,7 @@
         {
             global $wpdb;
             $this->wpdb = $wpdb;
-            if( ! get_option( 'wrl-options' ) )
+            if( ! get_option( 'vrp-options' ) )
             {
                 $defaults = [
                     'posts_limit' => 5,
@@ -25,7 +25,7 @@
                     ],
                     'sort_by' => 'random',
                 ];
-                add_option( 'wrl-options', $defaults );
+                add_option( 'vrp-options', $defaults );
             }
             # generate table
             $this->create_table();
@@ -36,7 +36,7 @@
 
         private function create_table()
         {
-            $sql = "CREATE TABLE IF NOT EXISTS `wrl_list` (
+            $sql = "CREATE TABLE IF NOT EXISTS `vrp_list` (
                 `wl_id` int(11) NOT NULL AUTO_INCREMENT,
                 `wl_post_id` int(11) NOT NULL,
                 `wl_assigned_post_id` varchar(200) NOT NULL,

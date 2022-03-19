@@ -1,5 +1,5 @@
 <?php
-    function create_random_list( $post_id ) {
+    function vrp_create_random_list( $post_id ) {
         if( empty( $post_id ) ) return '';
         # get the terms attached to the page
         $ta_terms = get_the_terms($post_id, 'ta-tag');
@@ -12,7 +12,7 @@
             global $wpdb;
             $term_ids = implode(', ', $term_ids);
             # get wrl options
-            $wrl_options = get_option( 'wrl-options' );
+            $wrl_options = get_option( 'vrp-options' );
             # get posts limit to fetch for a page
             $limit = $wrl_options['posts_limit'];
             # get sort by order
@@ -23,7 +23,7 @@
             $posts = $wpdb->get_results('SELECT ID FROM ' . $wpdb->prefix . 'posts p LEFT JOIN ' . $wpdb->prefix . 'term_relationships tr ON (p.ID = tr.object_id) WHERE (tr.term_taxonomy_id IN ('.$term_ids.')) AND p.post_status = "publish" AND p.ID != '.$post_id.' AND p.post_type IN ("' . $post_types . '") GROUP BY p.ID ORDER BY rand() LIMIT ' . $limit, ARRAY_A);
             if(count($posts)){
                 $posts = implode(',', array_column($posts, 'ID'));
-                $wpdb->query('INSERT INTO wrl_list (wl_post_id, wl_assigned_post_id) VALUES ('.$post_id.', "'.$posts.'")');
+                $wpdb->query('INSERT INTO vrp_list (wl_post_id, wl_assigned_post_id) VALUES ('.$post_id.', "'.$posts.'")');
                 return $posts;
             }
         }

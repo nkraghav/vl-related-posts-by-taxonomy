@@ -1,5 +1,5 @@
-<form name="wrl_tables" class="wrl_tables" method="post" action="">
-	<table><tbody><tr><td><input type="hidden" name="wrl_options" value="1">WP Related Posts Options</td></tr></tbody></table>
+<form name="vrp_tables" class="vrp_tables" method="post" action="">
+	<table><tbody><tr><td><input type="hidden" name="vrp_options" value="1">WP Related Posts Options</td></tr></tbody></table>
 	<table class="form-table">
 		<tbody>
 			<tr>
@@ -7,13 +7,13 @@
 					<label for="posts_limit"><strong><?php esc_html_e( 'Posts Limit', 'wrpbt-lng' ); ?></strong> <small>(No of posts to show in Related Post Section)</small></label>
 				</th>
 				<td class="posts_limit">
-					<label><input type="number" name="posts_limit" id="posts_limit" min="1" max="10" value="<?= $posts_limit ?>"> </label>
+					<label><input type="number" name="posts_limit" id="posts_limit" min="1" max="10" value="<?php echo $posts_limit; ?>"> </label>
 				</td>
 				<th scope="row" class="heading">
 					<label for="heading"><strong><?php esc_html_e( 'Section Heading', 'wrpbt-lng' ); ?></strong> <small>(Heading to be shown in Related Posts Section in frontend)</small></label>
 				</th>
 				<td class="heading">
-					<label><input type="text" name="heading" id="heading" min="1" max="10" value="<?= $heading ?>"> </label>
+					<label><input type="text" name="heading" id="heading" min="1" max="10" value="<?php echo $heading; ?>"> </label>
 				</td>
 			</tr>
 			<tr>
@@ -21,7 +21,7 @@
 					<label for="description_length"><strong><?php esc_html_e( 'Description Length', 'wrpbt-lng' ); ?></strong></label>
 				</th>
 				<td class="description_length">
-					<label><input type="number" name="description_length" id="description_length" min="1" value="<?= $description_length ?>"> </label>
+					<label><input type="number" name="description_length" id="description_length" min="1" value="<?php echo $description_length; ?>"> </label>
 				</td>
 				<th scope="row">
 					<label for="sort_by"><strong><?php esc_html_e( 'Order By', 'wrpbt-lng' ); ?></strong></label>
@@ -51,8 +51,8 @@
 				<th colspan="4" scope="row" class="rp_template">
 					<label for="rp_template"><strong><?php esc_html_e( 'Related Posts Template', 'wrpbt-lng' ); ?></strong></label><br>
 					<small>
-						1. &lt;wrl-repeater-main&gt; For repeative block, use this wrapper &lt;/wrl-repeater-main&gt;<br>
-						2. &lt;wrl-repeater-no-result&gt; For no results block &lt;/wrl-repeater-no-result&gt;<br>
+						1. &lt;vrp-repeater-main&gt; For repeative block, use this wrapper &lt;/vrp-repeater-main&gt;<br>
+						2. &lt;vrp-repeater-no-result&gt; For no results block &lt;/vrp-repeater-no-result&gt;<br>
 						3. Variables -
 						<span>a) %%post_title%% - For post title </span>
 						<span>b) %%post_description%% - For post description </span>
@@ -66,7 +66,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3"><?=submit_button();?></td>
+				<td colspan="3"><?php echo submit_button();?></td>
 				<td><p class="submit"><button data-click="refresh-all" data-id="0" class="button button-primary">Reset All Listings</button</p></td>
 			</tr>
 		</tbody>
