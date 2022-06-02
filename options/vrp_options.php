@@ -22,15 +22,17 @@ class VrpOptions
 	function vrp_options() {
 		$vrp_options = get_option( 'vrp-options', $this->get_defaults( ) );
 		if( isset( $_POST['vrp_options'] ) ) {
-			$post_data = $_POST;
-			array_walk_recursive($post_data, 'sanitize_text_field');
+			// $post_data = $_POST;
+			// array_walk_recursive($post_data, 'sanitize_text_field');
+			array_walk($_POST['post_types'], function(&$value, &$key) {
+				$value = sanitize_text_field($value);
+			});
 			$vrp_options = [
-				'posts_limit' => $_POST['posts_limit'],
-				'heading' => stripslashes( $_POST['heading'] ),
+				'posts_limit' => sanitize_text_field($_POST['posts_limit']),
+				'heading' => sanitize_text_field( $_POST['heading'] ),
 				'post_types' => $_POST['post_types'],
-				'description_length' => $_POST['description_length'],
-				'sort_by' => stripslashes( $_POST['sort_by'] ),
-				// 'rp_template' => $_POST['rp_template'],
+				'description_length' => sanitize_text_field($_POST['description_length']),
+				'sort_by' => sanitize_text_field( $_POST['sort_by'] ),
 				'rp_template' => wp_kses( $_POST['rp_template'], array_merge( wp_kses_allowed_html(), ['vrp-repeater-main' => [], 'vrp-repeater-no-result' => '', 'div' => ['class' => true], 'p' => [], 'h4' => [], 'h5' => [] ]) ),
 			];
 			update_option('vrp-options', $vrp_options );

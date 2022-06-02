@@ -1,13 +1,13 @@
 <div class="articles-box sidebar-box random">
-	<div class="head"><h4><?php echo $heading; ?></h4></div>
+	<div class="head"><h4><?php echo esc_html($heading); ?></h4></div>
 	<div class="box-content">
 		<?php
 			if( count( $related_content_data ) > 0 ) :
 				foreach( $related_content_data as $cont ) :
 		?>
 					<div class="content-list">
-						<h5><?php echo $cont['title']; ?></h5>   
-						<p><?php echo $cont['description']; ?> <a href="<?php echo $cont['cta_url']; ?>"><?php echo $cont['cta_label']; ?></a></p>
+						<h5><?php echo esc_html($cont['title']); ?></h5>   
+						<p><?php echo wp_kses_post($cont['description']); ?> <a href="<?php echo esc_url($cont['cta_url']); ?>"><?php echo esc_html($cont['cta_label']); ?></a></p>
 					</div>
 		<?php
 				endforeach;
