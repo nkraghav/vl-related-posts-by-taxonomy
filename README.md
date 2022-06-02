@@ -3,7 +3,7 @@ Contributors: nitinraghav
 Tags: vl-related-posts-by-taxonomy, contextual-related-posts, related, related-articles, related-posts, similar-posts
 Donate link: https://nitinraghav.com/
 Requires at least: 5.2
-Tested up to: 5.9.1
+Tested up to: 6.0
 Requires PHP: 7.0
 Stable tag: 0.1
 License: GPLv2 or later
