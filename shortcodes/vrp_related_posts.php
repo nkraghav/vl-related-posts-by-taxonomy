@@ -1,7 +1,7 @@
 <?php
 /**
  * Adds a shortcode for
- * creating three company widgte
+ * creating related posts section
  */
 class VrpRelatedPosts
 {
@@ -9,11 +9,13 @@ class VrpRelatedPosts
 	function __construct() {
         global $wpdb;
         $this->wpdb = $wpdb;
-		# create company widget block
-        add_shortcode( 'wrl_related_posts', [ $this, 'add_vrp_related_posts' ] );
+		# create related posts section
+        add_shortcode( 'vrp_related_posts', [ $this, 'add_vrp_related_posts' ] );
 	}
 
     function add_vrp_related_posts( $attr ) {
+        $no_desc = 'false';
+        if(!empty($attr['no-desc'])) $no_desc = $attr['no-desc'];
         # extract attributs
         extract( shortcode_atts( get_option( 'vrp-options' ), $attr ) );
         # return empty if related posts is not enabled on current post type
@@ -23,7 +25,7 @@ class VrpRelatedPosts
         $related_content_data = [];
         foreach (explode(',', $this->get_related_posts_ta()) as $post) :
             if( empty( $post ) ) continue;
-            $temp_data = $this->get_title_description( $post, $description_length );
+            $temp_data = $this->get_title_description( $post, $description_length, $no_desc );
             $temp_data['post_url'] = get_permalink( $post );
             $related_content_data[] = $temp_data;
         endforeach;
@@ -49,18 +51,22 @@ class VrpRelatedPosts
         return $posts['wl_assigned_post_id'];
     }
 
-    function get_title_description( $post_id = null, $length = 20 ) {
+    function get_title_description( $post_id = null, $length = 20, $no_desc = 'false' ) {
         if( empty( $post_id ) ) return '';
         $title = get_the_title( $post_id );
-        $description = get_the_content(null, false, $post_id);
-        if( ! empty( $description ) ) {
-            $description = preg_replace('/<h[1-6]>(.*?)<\/h[1-6]>/', '', $description );
-            $description = preg_replace('/\[table(.*?)\]/', '', $description );
-            $description = wp_trim_words(strip_tags( do_shortcode( $description )), $length);
+        if( $no_desc === 'false' ) {
+            $description = get_the_content(null, false, $post_id);
+            if( ! empty( $description ) ) {
+                $description = preg_replace('/<h[1-6]>(.*?)<\/h[1-6]>/', '', $description );
+                $description = preg_replace('/\[table(.*?)\]/', '', $description );
+                $description = wp_trim_words(strip_tags( do_shortcode( $description )), $length);
+            }
+            return [
+                'title' => $title,
+                'description' => apply_filters( 'vrp_post_description', $description, $post_id )
+            ];
+            exit();
         }
-        return [
-            'title' => $title,
-            'description' => apply_filters( 'wrl_post_description', $description, $post_id )
-        ];
+        return ['title' => $title];
     }
 }

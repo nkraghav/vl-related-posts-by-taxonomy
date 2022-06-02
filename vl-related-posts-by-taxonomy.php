@@ -57,11 +57,11 @@
 	 * Description: Add Related Posts module links in admin menu
 	 */
 	
-	function wrl_admin_menu() {
+	function vrp_admin_menu() {
 		add_menu_page('Related Posts', 'Related Posts', 'manage_options', 'vrp_related_posts', ['VrpMappingList', 'listing'], 'dashicons-embed-post', 6);
 		add_submenu_page('vrp_related_posts', 'Mapping List', 'Mapping List', 'manage_options', 'vrp_related_posts');
 	}
-	add_action('admin_menu', 'wrl_admin_menu');
+	add_action('admin_menu', 'vrp_admin_menu');
 
 	# start adding autoload classes
 	use VRP\Includes\Autoloads;

@@ -41,7 +41,7 @@ class VrpOptions
 		wp_enqueue_style('vrp_option_style', VRP_URL . '/assets/css/vrp-related-posts-options.min.css', array(), microtime());
 		wp_enqueue_script( 'vrp_script', VRP_URL . '/assets/js/script.js', array(), microtime() );
 		$vrp_info = [
-			'ajax_url' => site_url('/wp-json/wrl/v1/'),
+			'ajax_url' => site_url('/wp-json/vrp/v1/'),
 			'theme_url' => get_theme_file_uri(),
 			'vrp_url' => VRP_URL,
 		];
@@ -55,7 +55,7 @@ class VrpOptions
         $this->defaults = [
 			'posts_limit' => 5,
 			'heading' => 'Related Posts',
-			'post_types' => [],
+			'post_types' => ['post', 'page'],
 			'description_length' => 20,
 			'sort_by' => 'random',
 			'rp_template' => file_get_contents( VRP_PATH . "/templates/frontend/add_vrp_related_posts_default.php" ),

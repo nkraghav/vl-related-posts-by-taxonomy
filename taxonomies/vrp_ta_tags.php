@@ -12,7 +12,7 @@
         }
         
         function vrp_register_taxonomy() {
-            $wrl_options = get_option( 'vrp-options' );
+            $vrp_options = get_option( 'vrp-options' );
             $labels = array(
                 'name'              => _x( 'TA Tags', 'taxonomy general name' ),
                 'singular_name'     => _x( 'TA Tag', 'taxonomy singular name' ),
@@ -34,6 +34,6 @@
                 'query_var'         => true,
                 'rewrite'           => [ 'slug' => 'ta-tag' ],
             );
-            if( ! empty($wrl_options['post_types']) ) register_taxonomy( 'ta-tag', $wrl_options['post_types'], $args );
+            if( ! empty($vrp_options['post_types']) ) register_taxonomy( 'ta-tag', $vrp_options['post_types'], $args );
         }
 }

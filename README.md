@@ -25,7 +25,7 @@ Although several similar plugins exist today, VL Related Posts by Taxonomy is on
 * **Custom Template**: You can define your own custom template in the settings page to customize the related posts sections.
 * **Custom Tags**: You can define your own custom ta tags on basis of which related posts section will be populated.
 * **Widgets**: Add related posts to widgetized area of your theme. Lots of options available
-* **Shortcode**: Use `[add_wrl_related_posts]` to display the related posts section anywhere you want in the post content
+* **Shortcode**: Use `[add_vrp_related_posts]` to display the related posts section anywhere you want in the post content
     * Supports for custom description length on specific page by using (`description_length`) attribute.
 
 == Installation ==

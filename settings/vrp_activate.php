@@ -18,12 +18,13 @@
                 $defaults = [
                     'posts_limit' => 5,
                     'heading' => 'Related Posts',
-                    'description_length' => 75,
+                    'description_length' => 20,
                     'post_types' => [
                         'post',
                         'page',
                     ],
                     'sort_by' => 'random',
+                    'rp_template' => file_get_contents( VRP_PATH . "/templates/frontend/add_vrp_related_posts_default.php" ),
                 ];
                 add_option( 'vrp-options', $defaults );
             }

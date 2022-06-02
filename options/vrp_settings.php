@@ -13,7 +13,7 @@ class VrpSettings
 	}
 
     function vrp_settings_link($links) {
-        $settings_link = '<a href="admin.php?page=wrl_options">Options</a>';
+        $settings_link = '<a href="admin.php?page=vrp_options">Options</a>';
         array_unshift($links, $settings_link);
         return $links;
     }
