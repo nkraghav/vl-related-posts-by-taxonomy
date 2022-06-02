@@ -15,7 +15,7 @@ This plugin is used to add related posts to your WordPress site pages with inbui
 
 [VL Related Posts by Taxonomy] is a powerful plugin for WordPress that allows you to display a list of related posts on your website and in your feed.
 
-It shows the list of posts on the pages on the basis of the **ta-tags**. It relates all the posts having the same **ta-tags**.
+It shows the list of posts on the pages on the basis of the **vrp-tags**. It relates all the posts having the same **vrp-tags**.
 
 Although several similar plugins exist today, VL Related Posts by Taxonomy is one of the most powerful plugin that can support all of your custom post types. Only you have to select the post types to be suported by this plugin in its options page. It mapped the specified number of posts to the posts only once and stores them in the databse. So that it will not repeat the process of mapping.
 
@@ -23,7 +23,7 @@ Although several similar plugins exist today, VL Related Posts by Taxonomy is on
 
 * **ShortCode**: WRP will start displaying related posts on your site and feed to the place where you will add the ShortCode when you activate the plugin and assign the post types tp display.
 * **Custom Template**: You can define your own custom template in the settings page to customize the related posts sections.
-* **Custom Tags**: You can define your own custom ta tags on basis of which related posts section will be populated.
+* **Custom Tags**: You can define your own custom vrp tags on basis of which related posts section will be populated.
 * **Widgets**: Add related posts to widgetized area of your theme. Lots of options available
 * **Shortcode**: Use `[add_vrp_related_posts]` to display the related posts section anywhere you want in the post content
     * Supports for custom description length on specific page by using (`description_length`) attribute.

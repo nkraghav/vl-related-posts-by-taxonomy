@@ -2,9 +2,9 @@
     function vrp_create_random_list( $post_id ) {
         if( empty( $post_id ) ) return '';
         # get the terms attached to the page
-        $ta_terms = get_the_terms($post_id, 'ta-tag');
+        $vrp_terms = get_the_terms($post_id, 'vrp-tag');
         $term_ids = [];
-        foreach ($ta_terms as $key => $value) {
+        foreach ($vrp_terms as $key => $value) {
             $term_ids[] = $value->term_id;
         }
         # if terms exists then get the related posts
