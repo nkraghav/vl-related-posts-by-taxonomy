@@ -24,13 +24,14 @@ class VrpOptions
 		if( isset( $_POST['vrp_options'] ) ) {
 			// $post_data = $_POST;
 			// array_walk_recursive($post_data, 'sanitize_text_field');
-			array_walk($_POST['post_types'], function(&$value, &$key) {
+			$post_types = $_POST['post_types'];
+			array_walk($post_types, function(&$value, &$key) {
 				$value = sanitize_text_field($value);
 			});
 			$vrp_options = [
 				'posts_limit' => sanitize_text_field($_POST['posts_limit']),
 				'heading' => sanitize_text_field( $_POST['heading'] ),
-				'post_types' => $_POST['post_types'],
+				'post_types' => $post_types,
 				'description_length' => sanitize_text_field($_POST['description_length']),
 				'sort_by' => sanitize_text_field( $_POST['sort_by'] ),
 				'rp_template' => wp_kses( $_POST['rp_template'], array_merge( wp_kses_allowed_html(), ['vrp-repeater-main' => [], 'vrp-repeater-no-result' => '', 'div' => ['class' => true], 'p' => [], 'h4' => [], 'h5' => [] ]) ),
@@ -50,7 +51,7 @@ class VrpOptions
 		wp_localize_script('vrp_script', 'vrp_info', $vrp_info);
 		include_once VRP_PATH . "/templates/options/" . __FUNCTION__ . ".php";
 		$content = ob_get_clean();
-		echo $content;
+		echo html_entity_decode($content);
 	}
 
 	function set_defaults( ) {
