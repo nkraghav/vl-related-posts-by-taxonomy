@@ -40,7 +40,7 @@ class VrpOptions
 			$vrp_options = get_option( 'vrp-options' );
 		}
 		extract( $vrp_options );
-		ob_start();
+		// ob_start();
 		wp_enqueue_style('vrp_option_style', VRP_URL . '/assets/css/vrp-related-posts-options.min.css', array(), microtime());
 		wp_enqueue_script( 'vrp_script', VRP_URL . '/assets/js/script.js', array(), microtime() );
 		$vrp_info = [
@@ -50,8 +50,32 @@ class VrpOptions
 		];
 		wp_localize_script('vrp_script', 'vrp_info', $vrp_info);
 		include_once VRP_PATH . "/templates/options/" . __FUNCTION__ . ".php";
-		$content = ob_get_clean();
-		echo html_entity_decode($content);
+		// $content = ob_get_clean();
+		// $allowed_html = array(
+		// 	'a'      => array(
+		// 		'href'  => array(),
+		// 		'title' => array(),
+		// 	),
+		// 	'br'     => array(),
+		// 	'em'     => array(),
+		// 	'strong' => array(),
+		// 	'form' => array('name' => [], 'class' => [], 'method' => [], 'action' => []),
+		// 	'input' => ['type' => [], 'name' => [], 'value' => [], 'id' => [], 'required' => [], 'min' => []],
+		// 	'select' => ['name' => [], 'value' => [], 'id' => [], 'required' => []],
+		// 	'option' => ['name' => [], 'value' => []],
+		// 	'table' => array('class' => []),
+		// 	'thead' => array(),
+		// 	'tbody' => array(),
+		// 	'label' => ['for' => []],
+		// 	'strong' => [],
+		// 	'small' => [],
+		// 	'tr' => array(),
+		// 	'span' => [],
+		// 	'th' => array('scope' => [], 'row' => [], 'class' => [], 'colspan' => []),
+		// 	'td' => array('class' => [], 'colspan' => []),
+		// );
+		// echo wp_kses( $content, $allowed_html );
+		// echo htmlspecialchars_decode(esc_html( $content, wp_kses_allowed_html() ));
 	}
 
 	function set_defaults( ) {
