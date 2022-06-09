@@ -22,16 +22,10 @@ class VrpOptions
 	function vrp_options() {
 		$vrp_options = get_option( 'vrp-options', $this->get_defaults( ) );
 		if( isset( $_POST['vrp_options'] ) ) {
-			// $post_data = $_POST;
-			// array_walk_recursive($post_data, 'sanitize_text_field');
-			$post_types = $_POST['post_types'];
-			array_walk($post_types, function(&$value, &$key) {
-				$value = sanitize_text_field($value);
-			});
 			$vrp_options = [
 				'posts_limit' => sanitize_text_field($_POST['posts_limit']),
 				'heading' => sanitize_text_field( $_POST['heading'] ),
-				'post_types' => $post_types,
+				'post_types' => array_map( 'sanitize_text_field', $_POST['post_types'] ),
 				'description_length' => sanitize_text_field($_POST['description_length']),
 				'sort_by' => sanitize_text_field( $_POST['sort_by'] ),
 				'rp_template' => wp_kses( $_POST['rp_template'], array_merge( wp_kses_allowed_html(), ['vrp-repeater-main' => [], 'vrp-repeater-no-result' => '', 'div' => ['class' => true], 'p' => [], 'h4' => [], 'h5' => [] ]) ),
